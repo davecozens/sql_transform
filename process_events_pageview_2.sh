@@ -1,6 +1,8 @@
 #!/bin/bash
 
-echo "" >  pageview_event_out.json
+#echo "[" >  pageview_event_out.json
+
+lineNo=0;
 
 while read line           
 do           
@@ -46,16 +48,25 @@ do
 	user_socialNetworks_linkedin=$(cut -d"	" -f40 <<<"${line}")
 	user_socialNetworks_google=$(cut -d"	" -f41 <<<"${line}")
 	url=$(cut -d"	" -f42 <<<"${line}")
-	devicetype=$(cut -d"   " -f43 <<<"${line}")
+	devicetype=$(cut -d"	" -f43 <<<"${line}")
 
-geolcation="FALSE"
+geolcation="false"
 if [ -n "$geolocation_city" ]; then
-    geolocation="TRUE"
+    geolocation="true"
+elif  [ -n "$geolocation_latitude" ]; then
+    geolocation="true"
+elif  [ -n "$geolocation_country" ]; then
+    geolocation="true"
 fi
 
 
-	echo "[
-    {
+#if [ $lineNo -eq 0 ]; then
+#	lineNo=1
+#else
+#	echo "," >>  pageview_event_out.json
+#fi
+
+	echo "{
         \"_id\":\"$id\",
         \"deviceType\": \"browser\",
         \"clientTimestamp\": \"$clientTimestamp\",
@@ -69,7 +80,7 @@ fi
         \"customerID\": \"$customerID\",
         \"referral\": {\"channel\":null,\"url\":null},
         \"clusters\": [
-            \"$clusters\"
+            $clusters
         ],
         \"language\":\"$language\",
         \"geolocation\":{
@@ -109,7 +120,7 @@ fi
         },
         \"user\":{
             \"clusters\":[
-                \"$clusters\"
+                $clusters
             ],
             \"language\":\"$user_language\",
             \"birthday\":\"$user_birthdate\",
@@ -118,7 +129,7 @@ fi
                 \"latitude\":\"$user_address_latitude\",
                 \"longitude\":\"$user_address_longitude\",
                 \"city\":\"$user_address_city\",
-                \"region\":$user_address_region,
+                \"region\":\"$user_address_region\",
                 \"country_code\":\"$user_address_country_code\"
             },
             \"interests\":null,
@@ -129,12 +140,11 @@ fi
                 \"linkedin\":\"$user_socialNetworks_google\"
             }
         }
-    }
-]" >> pageview_event_out.json
+    }" >> pageview_event_out.json
 
 
 	echo "$id $clusters $user_birthdate $user_address_country_code $user_gender $user_socialNetworks_facebook | $user_socialNetworks_linkedin | $user_socialNetworks_google | $url"
 done < pageview_event_out.tab
 
 
-
+echo  "]" >>  pageview_event_out.json
