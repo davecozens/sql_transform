@@ -1,0 +1,4 @@
+_id: STRING
+externalID: STRING
+answerExternalID: STRING
+correct: BOOLEAN

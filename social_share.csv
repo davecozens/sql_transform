@@ -1,0 +1,6 @@
+_id: STRING
+network: STRING
+profileName: STRING
+contentTitle: STRING
+contentURL: STRING
+profileURL: STRING

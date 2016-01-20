@@ -1,0 +1,3 @@
+_id: STRING
+externalID: STRING
+claimed: BOOLEAN

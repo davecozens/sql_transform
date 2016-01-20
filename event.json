@@ -1,0 +1,306 @@
+[
+    {
+        "name": "_id",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "deviceType",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "clientTimestamp",
+        "type": "TIMESTAMP"
+    },
+    {
+        "name": "serverTimestamp",
+        "type": "TIMESTAMP",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "processedTimestamp",
+        "type": "TIMESTAMP",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "action",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "namespace",
+        "type": "STRING"
+    },
+    {
+        "name": "infinitiID",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "installationID",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "sessionID",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "customerID",
+        "type": "STRING"
+    },
+    {
+        "name": "referral",
+        "type": "RECORD",
+        "fields": [
+            {
+                "name": "channel",
+                "type": "STRING"
+            },
+            {
+                "name": "url",
+                "type": "STRING"
+            }
+        ]
+    },
+    {
+        "name": "clusters",
+        "type": "STRING",
+        "mode": "REPEATED"
+    },
+    {
+        "name": "language",
+        "type": "STRING"
+    },
+    {
+        "name": "geolocation",
+        "type": "RECORD",
+        "fields": [
+            {
+                "name": "locationName",
+                "type": "STRING"
+            },
+            {
+                "name": "ip",
+                "type": "STRING"
+            },
+            {
+                "name": "latitude",
+                "type": "STRING"
+            },
+            {
+                "name": "longitude",
+                "type": "STRING"
+            },
+            {
+                "name": "city",
+                "type": "STRING"
+            },
+            {
+                "name": "region",
+                "type": "STRING"
+            },
+            {
+                "name": "countryCode",
+                "type": "STRING"
+            }
+        ]
+    },
+    {
+        "name": "environment",
+        "type": "RECORD",
+        "mode": "REQUIRED",
+        "fields": [
+            {
+                "name": "userAgent",
+                "type": "STRING"
+            },
+            {
+                "name": "screenSize",
+                "type": "RECORD",
+                "fields": [
+                    {
+                        "name": "width",
+                        "type": "INTEGER"
+                    },
+                    {
+                        "name": "height",
+                        "type": "INTEGER"
+                    }
+                ]
+            },
+            {
+                "name": "windowSize",
+                "type": "RECORD",
+                "fields": [
+                    {
+                        "name": "width",
+                        "type": "INTEGER"
+                    },
+                    {
+                        "name": "height",
+                        "type": "INTEGER"
+                    }
+                ]
+            },
+            {
+                "name": "javascript",
+                "type": "BOOLEAN"
+            },
+            {
+                "name": "cookies",
+                "type": "BOOLEAN"
+            },
+            {
+                "name": "doNotTrack",
+                "type": "BOOLEAN"
+            },
+            {
+                "name": "geolocation",
+                "type": "BOOLEAN"
+            },
+            {
+                "name": "touchPoints",
+                "type": "INTEGER"
+            },
+            {
+                "name": "landscapeMode",
+                "type": "BOOLEAN"
+            },
+            {
+                "name": "device",
+                "type": "RECORD",
+                "fields": [
+                    {
+                        "name": "isProjection",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "isTV",
+                        "type": "BOOLEAN"
+                    }
+                ]
+            },
+            {
+                "name": "browser",
+                "type": "RECORD",
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "STRING"
+                    },
+                    {
+                        "name": "version",
+                        "type": "STRING"
+                    },
+                    {
+                        "name": "language",
+                        "type": "STRING"
+                    }
+                ]
+            },
+            {
+                "name": "os",
+                "type": "STRING"
+            },
+            {
+                "name": "vendor",
+                "type": "STRING"
+            },
+            {
+                "name": "model",
+                "type": "STRING"
+            },
+            {
+                "name": "deviceID",
+                "type": "STRING"
+            },
+            {
+                "name": "deviceType",
+                "type": "STRING"
+            },
+            {
+                "name": "maxTouchPoints",
+                "type": "INTEGER"
+            }
+        ]
+    },
+    {
+        "name": "user",
+        "type": "RECORD",
+        "fields": [
+            {
+                "name": "clusters",
+                "type": "STRING",
+                "mode": "REPEATED"
+            },
+            {
+                "name": "language",
+                "type": "STRING"
+            },
+            {
+                "name": "birthday",
+                "type": "TIMESTAMP"
+            },
+            {
+                "name": "gender",
+                "type": "STRING"
+            },
+            {
+                "name": "address",
+                "type": "RECORD",
+                "fields": [
+                    {
+                        "name": "latitude",
+                        "type": "FLOAT"
+                    },
+                    {
+                        "name": "longitude",
+                        "type": "STRING"
+                    },
+                    {
+                        "name": "city",
+                        "type": "STRING"
+                    },
+                    {
+                        "name": "region",
+                        "type": "STRING"
+                    },
+                    {
+                        "name": "country_code",
+                        "type": "STRING"
+                    }
+                ]
+            },
+            {
+                "name": "interests",
+                "type": "STRING",
+                "mode": "REPEATED"
+            },
+            {
+                "name": "channel",
+                "type": "STRING"
+            },
+            {
+                "name": "socialNetworks",
+                "type": "RECORD",
+                "fields": [
+                    {
+                        "name": "facebook",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "linkedin",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "google",
+                        "type": "BOOLEAN"
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,92 @@
+[
+    {
+        "name": "_id",
+        "type": "STRING"
+    },
+    {
+        "name": "timestamp",
+        "type": "TIMESTAMP"
+    },
+    {
+        "name": "infinitiID",
+        "type": "STRING"
+    },
+    {
+        "name": "clusters",
+        "type": "STRING",
+        "mode": "REPEATED"
+    },
+    {
+        "name": "isAnonymous",
+        "type": "BOOLEAN"
+    },
+    {
+        "name": "language",
+        "type": "STRING"
+    },
+    {
+        "name": "birthday",
+        "type": "TIMESTAMP"
+    },
+    {
+        "name": "gender",
+        "type": "STRING"
+    },
+    {
+        "name": "address",
+        "type": "RECORD",
+        "fields": [
+            {
+                "name": "latitude",
+                "type": "FLOAT"
+            },
+            {
+                "name": "longitude",
+                "type": "STRING"
+            },
+            {
+                "name": "city",
+                "type": "STRING"
+            },
+            {
+                "name": "region",
+                "type": "STRING"
+            },
+            {
+                "name": "country_code",
+                "type": "STRING"
+            }
+        ]
+    },
+    {
+        "name": "interests",
+        "type": "STRING",
+        "mode": "REPEATED"
+    },
+    {
+        "name": "channel",
+        "type": "STRING"
+    },
+    {
+        "name": "socialNetworks",
+        "type": "RECORD",
+        "fields": [
+            {
+                "name": "facebook",
+                "type": "STRING"
+            },
+            {
+                "name": "linkedin",
+                "type": "STRING"
+            },
+            {
+                "name": "google",
+                "type": "STRING"
+            }
+        ]
+    },
+    {
+        "name": "customerID",
+        "type": "STRING"
+    }
+]

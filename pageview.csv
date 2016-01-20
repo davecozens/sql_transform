@@ -1,0 +1,4 @@
+_id: STRING
+url: STRING
+context: STRING
+keywords: STRING

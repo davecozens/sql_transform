@@ -1,0 +1,113 @@
+[
+    {
+        "name": "_id",
+        "type": "STRING"
+    },
+    {
+        "name": "revenue",
+        "type": "FLOAT"
+    },
+    {
+        "name": "currency",
+        "type": "STRING"
+    },
+    {
+        "name": "deliveryAddress",
+        "type": "RECORD",
+        "fields": [
+            {
+                "name": "latitude",
+                "type": "FLOAT"
+            },
+            {
+                "name": "longitude",
+                "type": "FLOAT"
+            },
+            {
+                "name": "city",
+                "type": "STRING"
+            },
+            {
+                "name": "region",
+                "type": "STRING"
+            },
+            {
+                "name": "countryCode",
+                "type": "STRING"
+            }
+        ]
+    },
+    {
+        "name": "items",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "sku",
+                "type": "STRING"
+            },
+            {
+                "name": "price",
+                "type": "FLOAT"
+            },
+            {
+                "name": "currency",
+                "type": "STRING"
+            },
+            {
+                "name": "variant",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "key",
+                        "type": "STRING"
+                    },
+                    {
+                        "name": "value",
+                        "type": "STRING"
+                    }
+                ]
+            },
+            {
+                "name": "quantity",
+                "type": "INTEGER"
+            },
+            {
+                "name": "name",
+                "type": "STRING"
+            },
+            {
+                "name": "category",
+                "type": "STRING"
+            }
+        ]
+    },
+    {
+        "name": "itemsCount",
+        "type": "INTEGER"
+    },
+    {
+        "name": "loyalty",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "number",
+                "type": "STRING"
+            },
+            {
+                "name": "type",
+                "type": "STRING"
+            }
+        ]
+    },
+    {
+        "name": "serverTimestamp",
+        "type": "TIMESTAMP"
+    },
+    {
+        "name": "transactionID",
+        "type": "STRING"
+    }
+]

@@ -1,0 +1,2 @@
+hint.txt
+mysql --user=fcbadmin --password=wMh4z2SVSqD6 -h infinitifcb.chuapwo9kkbi.us-east-1.rds.amazonaws.com < pageview_event.sql > pageview_event_out.tab
