@@ -1,4 +1,4 @@
 
 create temp table on infiniti db
 auto insert job on start and query this to get next job
-
+mod script to write a status file as well as nohup - use this on apache site
