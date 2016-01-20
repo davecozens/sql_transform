@@ -60,88 +60,8 @@ elif  [ -n "$geolocation_country" ]; then
 fi
 
 
-#if [ $lineNo -eq 0 ]; then
-#	lineNo=1
-#else
-#	echo "," >>  pageview_event_out.json
-#fi
 
-	echo "{
-        \"_id\":\"$id\",
-        \"deviceType\": \"browser\",
-        \"clientTimestamp\": \"$clientTimestamp\",
-        \"serverTimestamp\": \"$clientTimestamp\",    
-        \"processedTimestamp\": \"$clientTimestamp\",
-        \"action\": \"pageview\",
-        \"namespace\": null,
-        \"infinitiID\": \"63e67c1b-3d82-4217-b01a-0df1e5121465\",
-        \"installationID\": \"$customerID\",
-        \"sessionID\": \"$sessionID\",
-        \"customerID\": \"$customerID\",
-        \"referral\": {\"channel\":null,\"url\":null},
-        \"clusters\": [
-            $clusters
-        ],
-        \"language\":\"$language\",
-        \"geolocation\":{
-            \"locationName\":\"$geolocation_locationName\",
-            \"ip\":\"$geolocation_ip\",
-            \"latitude\":\"$geolocation_latitude\",
-            \"longitude\":\"$geolocation_longitude\",
-            \"city\":\"$geolocation_city\",
-            \"region\":\"$geolocation_region\",
-            \"countryCode\":\"$geolocation_countryCode\"
-        },
-        \"environment\":{
-            \"userAgent\":\"$environment_userAgent\",
-            \"screenSize\":null,  
-            \"windowSize\":null,    
-            \"javascript\":TRUE,
-            \"cookies\":TRUE,
-            \"doNotTrack\":FALSE,
-            \"geolocation\":$geolocation,
-            \"touchPoints\":null,
-            \"landscapeMode\":null,
-            \"device\":{
-                \"isProjection\":FALSE,
-                \"isTV\":FALSE
-            },
-            \"browser\":{
-                \"name\":\"$environment_browser_name\",
-                \"version\":\"$environment_browser_version\",
-                \"language\":\"user_language\"
-            },
-            \"os\":\"$environment_os\",
-            \"vendor\":null,
-            \"model\":null,
-            \"deviceId\":null,
-            \"deviceType\":\"$devicetype\",
-            \"maxTouchPoints\":null
-        },
-        \"user\":{
-            \"clusters\":[
-                $clusters
-            ],
-            \"language\":\"$user_language\",
-            \"birthday\":\"$user_birthdate\",
-            \"gender\":\"$user_gender\",
-            \"address\":{
-                \"latitude\":\"$user_address_latitude\",
-                \"longitude\":\"$user_address_longitude\",
-                \"city\":\"$user_address_city\",
-                \"region\":\"$user_address_region\",
-                \"country_code\":\"$user_address_country_code\"
-            },
-            \"interests\":null,
-            \"channel\":null,
-            \"socialNetworks\":{
-                \"facebook\":\"$user_socialNetworks_facebook\",
-                \"linkedin\":\"$user_socialNetworks_linkedin\",
-                \"linkedin\":\"$user_socialNetworks_google\"
-            }
-        }
-    }" >> pageview_event_out.json
-
+echo"{\"_id\":\"$id\",\"deviceType\":\"browser\",\"clientTimestamp\":\"$clientTimestamp\",\"serverTimestamp\":\"$clientTimestamp\",\"processedTimestamp\":\"$clientTimestamp\",\"action\":\"pageview\",\"namespace\":null,\"infinitiID\":\"63e67c1b-3d82-4217-b01a-0df1e5121465\",\"installationID\":\"$customerID\",\"sessionID\":\"$sessionID\",\"customerID\":\"$customerID\",\"referral\":{\"channel\":null,\"url\":null},\"clusters\":[$clusters],\"language\":\"$language\",\"geolocation\":{\"locationName\":\"$geolocation_locationName\",\"ip\":\"$geolocation_ip\",\"latitude\":\"$geolocation_latitude\",\"longitude\":\"$geolocation_longitude\",\"city\":\"$geolocation_city\",\"region\":\"$geolocation_region\",\"countryCode\":\"$geolocation_countryCode\"},\"environment\":{\"userAgent\":\"$environment_userAgent\",\"screenSize\":null,\"windowSize\":null,\"javascript\":TRUE,\"cookies\":TRUE,\"doNotTrack\":FALSE,\"geolocation\":$geolocation,\"touchPoints\":null,\"landscapeMode\":null,\"device\":{\"isProjection\":FALSE,\"isTV\":FALSE},\"browser\":{\"name\":\"$environment_browser_name\",\"version\":\"$environment_browser_version\",\"language\":\"user_language\"},\"os\":\"$environment_os\",\"vendor\":null,\"model\":null,\"deviceId\":null,\"deviceType\":\"$devicetype\",\"maxTouchPoints\":null},\"user\":{\"clusters\":[$clusters],\"language\":\"$user_language\",\"birthday\":\"$user_birthdate\",\"gender\":\"$user_gender\",\"address\":{\"latitude\":\"$user_address_latitude\",\"longitude\":\"$user_address_longitude\",\"city\":\"$user_address_city\",\"region\":\"$user_address_region\",\"country_code\":\"$user_address_country_code\"},\"interests\":null,\"channel\":null,\"socialNetworks\":{\"facebook\":\"$user_socialNetworks_facebook\",\"linkedin\":\"$user_socialNetworks_linkedin\",\"linkedin\":\"$user_socialNetworks_google\"}}}">>pageview_event_out.json
 
 	echo "$id $clusters $user_birthdate $user_address_country_code $user_gender $user_socialNetworks_facebook | $user_socialNetworks_linkedin | $user_socialNetworks_google | $url"
 done < pageview_event_out.tab
