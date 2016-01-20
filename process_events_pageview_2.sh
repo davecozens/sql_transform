@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "" >  pageview_event_out.json
+
 while read line           
 do           
 	id=$(cut -d"	" -f1 <<<"${line}")
@@ -43,14 +45,14 @@ do
 	user_socialNetworks_facebook=$(cut -d"	" -f39 <<<"${line}")
 	user_socialNetworks_linkedin=$(cut -d"	" -f40 <<<"${line}")
 	user_socialNetworks_google=$(cut -d"	" -f41 <<<"${line}")
-	url=$(cut -d"	" -f41 <<<"${line}")
+	url=$(cut -d"	" -f42 <<<"${line}")
+	devicetype=$(cut -d"   " -f43 <<<"${line}")
 
 geolcation="FALSE"
 if [ -n "$geolocation_city" ]; then
     geolocation="TRUE"
 fi
 
-echo "" >  pageview_event_out.json
 
 	echo "[
     {
@@ -101,8 +103,8 @@ echo "" >  pageview_event_out.json
             \"os\":\"$environment_os\",
             \"vendor\":null,
             \"model\":null,
-            \"deviceId\":\"***\",
-            \"deviceType\":\"***\",
+            \"deviceId\":null,
+            \"deviceType\":\"$devicetype\",
             \"maxTouchPoints\":null
         },
         \"user\":{
