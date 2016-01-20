@@ -40,7 +40,8 @@ SELECT
         `infiniti-live`.`BD_SocialAccountMembership`.`Facebook` AS `user.socialNetworks.facebook`,
         `infiniti-live`.`BD_SocialAccountMembership`.`LinkedIn` AS `user.socialNetworks.linkedin`,
         `infiniti-live`.`BD_SocialAccountMembership`.`GooglePlus` AS `user.socialNetworks.google`,
-        `infiniti-live`.`SessionAction`.`ActionURL` AS `url`
+        `infiniti-live`.`SessionAction`.`ActionURL` AS `actionUrl`,
+	`infiniti-live`.`CustomerDevice`.`DeviceType` AS `DeviceType`
 
     FROM
         ((((((((((((((
@@ -61,4 +62,4 @@ SELECT
         LEFT JOIN `infiniti-live`.`CustomerDevice` ON (((`infiniti-live`.`Session`.`CustomerDeviceID` = `infiniti-live`.`CustomerDevice`.`CustomerDeviceID`)
             AND (`infiniti-live`.`SessionAction`.`ActionID` = `infiniti-live`.`Action`.`ActionID`))))
             
-limit 1000
+limit 100

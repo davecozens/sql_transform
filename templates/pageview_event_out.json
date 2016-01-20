@@ -1,0 +1,78 @@
+
+[
+    {
+        "_id":"e5abcef0-bf5c-11e5-be11-22000b9884dc",
+        "deviceType": "browser",
+        "clientTimestamp": "2015-06-18 10:51:12",
+        "serverTimestamp": "2015-06-18 10:51:12",    
+        "processedTimestamp": "2015-06-18 10:51:12",
+        "action": "pageview",
+        "namespace": null,
+        "infinitiID": "63e67c1b-3d82-4217-b01a-0df1e5121465",
+        "installationID": "3",
+        "sessionID": "196186",
+        "customerID": "3",
+        "referral": {"channel":null,"url":null},
+        "clusters": [
+            ""Season Ticket Holders Who Have a Profile", "Customers who have made a purchase", "Customers who have spent 100 CHF or more", "Visited in the last month""
+        ],
+        "language":"NULL",
+        "geolocation":{
+            "locationName":"",
+            "ip":"62.203.60.188",
+            "latitude":"47",
+            "longitude":"8",
+            "city":"",
+            "region":"",
+            "countryCode":"CH"
+        },
+        "environment":{
+            "userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36",
+            "screenSize":null,  
+            "windowSize":null,    
+            "javascript":TRUE,
+            "cookies":TRUE,
+            "doNotTrack":FALSE,
+            "geolocation":TRUE,
+            "touchPoints":null,
+            "landscapeMode":null,
+            "device":{
+                "isProjection":FALSE,
+                "isTV":FALSE
+            },
+            "browser":{
+                "name":"Chrome",
+                "version":"43.0.2357.124",
+                "language":"user_language"
+            },
+            "os":"OS X 10.9.5",
+            "vendor":null,
+            "model":null,
+            "deviceId":"***",
+            "deviceType":"***",
+            "maxTouchPoints":null
+        },
+        "user":{
+            "clusters":[
+                ""Season Ticket Holders Who Have a Profile", "Customers who have made a purchase", "Customers who have spent 100 CHF or more", "Visited in the last month""
+            ],
+            "language":"NULL",
+            "birthday":"1949-01-09",
+            "gender":"Male",
+            "address":{
+                "latitude":"",
+                "longitude":"",
+                "city":"Hölstein",
+                "region":,
+                "country_code":"CH"
+            },
+            "interests":null,
+            "channel":null,
+            "socialNetworks":{
+                "facebook":"FALSE",
+                "linkedin":"FALSE",
+                "linkedin":"FALSE"
+            }
+        }
+    }
+]
