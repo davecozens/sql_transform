@@ -61,5 +61,6 @@ SELECT
         JOIN `infiniti-live`.`ChannelSource` ON ((`infiniti-live`.`Session`.`ChannelSourceID` = `infiniti-live`.`ChannelSource`.`ChannelSourceID`)))
         LEFT JOIN `infiniti-live`.`CustomerDevice` ON (((`infiniti-live`.`Session`.`CustomerDeviceID` = `infiniti-live`.`CustomerDevice`.`CustomerDeviceID`)
             AND (`infiniti-live`.`SessionAction`.`ActionID` = `infiniti-live`.`Action`.`ActionID`))))
-            
-limit 100
+           
+where `infiniti-live`.`Customer`.`CustomerID` between user1 and user2 
+
