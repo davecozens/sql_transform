@@ -71,13 +71,29 @@ elif  [ -n "$geolocation_country" ]; then
     geolocation="true"
 fi
 
+if [ "$user_birthdate" != "NULL" ]; then
+	user_birthdate="$user_birthdate 00:00"
+else
+        user_birthdate="null"
+fi
+
 if (( $l % 100 == 0 )); then
 	echo "Line $l $(date)"
 fi
 
-result="{\"_id\": \"$id\",\"deviceType\": \"browser\",\"clientTimestamp\": \"$clientTimestamp\",\"serverTimestamp\": \"$clientTimestamp\",\"processedTimestamp\": \"$clientTimestamp\",\"action\": \"pageview\",\"namespace\": null,\"infinitiID\": \"63e67c1b-3d82-4217-b01a-0df1e5121465\",\"installationID\": \"$customerID\",\"sessionID\": \"$sessionID\",\"customerID\": \"$customerID\",\"referral\": null,\"clusters\": [$clusters],\"language\": \"$language\",\"geolocation\": {\"locationName\": \"$geolocation_locationName\",\"ip\": \"$geolocation_ip\",\"latitude\": \"$geolocation_latitude\",\"longitude\": \"$geolocation_longitude\",\"city\": \"$geolocation_city\",\"region\": \"$geolocation_region\",\"countryCode\": \"$geolocation_countryCode\"},\"environment\": {\"userAgent\": \"$environment_userAgent\",\"screenSize\": null,\"windowSize\": null,\"javascript\": true,\"cookies\": true,\"doNotTrack\": false,\"geolocation\": $geolocation,\"touchPoints\": null,\"landscapeMode\": null,\"device\": {\"isProjection\": false,\"isTV\": false},\"browser\": {\"name\": \"$environment_browser_name\",\"version\": \"$environment_browser_version\",\"language\": \"user_language\"},\"os\": \"$environment_os\",\"vendor\": null,\"model\": null,\"deviceId\": null,\"deviceType\": \"$devicetype\",\"maxTouchPoints\": null},\"user\": {\"clusters\": [$clusters],\"language\": \"$user_language\",\"birthday\": \"$user_birthdate\",\"gender\": \"$user_gender\",\"address\": {\"latitude\": \"$user_address_latitude\",\"longitude\": \"$user_address_longitude\",\"city\": \"$user_address_city\",\"region\": \"$user_address_region\",\"country_code\": \"$user_address_country_code\"},\"interests\": null,\"channel\": null,\"socialNetworks\": {\"facebook\": \"$user_socialNetworks_facebook\",\"linkedin\": \"$user_socialNetworks_linkedin\",\"linkedin\": \"$user_socialNetworks_google\"}},\"payload_pageview\":{\"url\":\"$url\",\"context\":null,\"keywords\":null}}"
+if [ "$clusters"=="NULL" ]; then
+	clusters=""
+fi
+
+result="{\"_id\":\"$id\",\"deviceType\":\"browser\",\"clientTimestamp\":\"$clientTimestamp\",\"serverTimestamp\":\"$clientTimestamp\",\"processedTimestamp\":\"$clientTimestamp\",\"action\":\"pageview\",\"namespace\":null,\"infinitiID\":\"63e67c1b-3d82-4217-b01a-0df1e5121465\",\"installationID\":\"$customerID\",\"sessionID\":\"$sessionID\",\"customerID\":\"$customerID\",\"referral\":null,\"clusters\":[$clusters],\"language\":\"$language\",\"geolocation\":{\"locationName\":\"$geolocation_locationName\",\"ip\":\"$geolocation_ip\",\"latitude\":\"$geolocation_latitude\",\"longitude\":\"$geolocation_longitude\",\"city\":\"$geolocation_city\",\"region\":\"$geolocation_region\",\"countryCode\":\"$geolocation_countryCode\"},\"environment\":{\"userAgent\":\"$environment_userAgent\",\"screenSize\":null,\"windowSize\":null,\"javascript\":true,\"cookies\":true,\"doNotTrack\":false,\"geolocation\":$geolocation,\"touchPoints\":null,\"landscapeMode\":null,\"device\":{\"isProjection\":false,\"isTV\":false},\"browser\":{\"name\":\"$environment_browser_name\",\"version\":\"$environment_browser_version\",\"language\":\"user_language\"},\"os\":\"$environment_os\",\"vendor\":null,\"model\":null,\"deviceId\":null,\"deviceType\":\"$devicetype\",\"maxTouchPoints\":null},\"user\":{\"clusters\":[$clusters],\"language\":\"$user_language\",\"birthday\":\"$user_birthdate\",\"gender\":\"$user_gender\",\"address\":{\"latitude\":\"$user_address_latitude\",\"longitude\":\"$user_address_longitude\",\"city\":\"$user_address_city\",\"region\":\"$user_address_region\",\"country_code\":\"$user_address_country_code\"},\"interests\":null,\"channel\":null,\"socialNetworks\":{\"facebook\":\"$user_socialNetworks_facebook\",\"linkedin\":\"$user_socialNetworks_linkedin\",\"linkedin\":\"$user_socialNetworks_google\"}},\"payload_pageview\":{\"url\":\"$url\",\"context\":null,\"keywords\":null}}"
+
+
 
 final=`sed  's:"NULL":null:g'  <<< $result`
+final=`sed  's:"false":false:g'  <<< $final`
+final=`sed  's:"true":true:g'  <<< $final`
+final=`sed  's:"":null:g'  <<< $final`
+
 echo $final >> $dest
 
 
@@ -87,5 +103,9 @@ done
 #done < $file
 
 aws s3 cp $dest s3://2p-bq --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --region us-east-1  --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+gsutil cp $dest gs://2pventuredataeu
+bq insert infiniti_tracking_development.event $dest
 
-echo $(date)]]
+
+
+echo $(date)
